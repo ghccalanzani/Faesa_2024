@@ -40,7 +40,7 @@ public class LseItem {
 
     public boolean insereFinal(Item item) {
         NoItem novoNo = new NoItem(item);
-        if (eVazia()) {
+        if (this.eVazia()) {
             prim = novoNo;
             ult = novoNo;
             quant++;
@@ -59,7 +59,7 @@ public class LseItem {
         NoItem novoNo;
         if (pos < 0 || pos >= quant) {  //Considerando que se colocar igual a quant NÃO é a mesma coisa que inserir no final
             return false;
-        } else if (eVazia()) {
+        } else if (this.eVazia()) {
             novoNo = new NoItem(item);
             prim = novoNo;
             ult = novoNo;
@@ -86,7 +86,7 @@ public class LseItem {
     }
 
     public NoItem pesquisar(int codigoPesquisa) {
-        if (eVazia())
+        if (this.eVazia())
             return null;
         NoItem noPosAtual = prim;
         for (int i = 0; i < quant; i++) {
@@ -106,7 +106,7 @@ public class LseItem {
     }
 
     public NoItem remover(int pos) {
-        if (eVazia())
+        if (this.eVazia())
             return null;
         NoItem noPosAtual = prim;
         NoItem noRemovido;
@@ -120,7 +120,7 @@ public class LseItem {
             return noRemovido;
         }
         if (pos == quant - 1) { //Caso o nó a ser removido seja o último
-            for (int i = 0; i < pos - 1; i++)
+            for (int i = 0; i < pos - 1; i++)  //Caminhar até posição anterior ao nó que será removido
                 noPosAtual = noPosAtual.getProximoNo();
             noRemovido = noPosAtual.getProximoNo();
             noPosAtual.setProximoNo(null);
@@ -134,7 +134,7 @@ public class LseItem {
             return noRemovido;
         }
         //Remover o k-ésimo nó
-        for (int i = 0; i < pos - 1; i++)
+        for (int i = 0; i < pos - 1; i++)   //Caminhar até posição anterior ao nó que será removido
             noPosAtual = noPosAtual.getProximoNo();
         noRemovido = noPosAtual.getProximoNo();
         noPosAtual.setProximoNo(noRemovido.getProximoNo());
