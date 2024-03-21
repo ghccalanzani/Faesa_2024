@@ -30,6 +30,6 @@ public class NoItem {
         return "NoItem{" +
                 "item=" + item +
                 ", proximoNo=" + proximoNo +
-                '}';
+                "} ";
     }
 }

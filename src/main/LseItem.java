@@ -75,7 +75,7 @@ public class LseItem {
         } else{
             NoItem noPosAtual = prim;
             novoNo = new NoItem(item);
-            for (int i = 0; i < pos - 1; i++) {             //Caminhar até posição anterior ao nó que será inserido
+            for (int i = 0; i < pos - 1; i++) {            //Caminhar até posição anterior ao nó que será inserido
                 noPosAtual = noPosAtual.getProximoNo();
             }
             novoNo.setProximoNo(noPosAtual.getProximoNo());
@@ -153,5 +153,15 @@ public class LseItem {
         this.ult = novaLista.ult;
         this.quant += novaLista.quant;
         return this;
+    }
+
+    public String mostrarElementos(){
+        if (this.eVazia())
+            return "Lista Vazia";
+        NoItem noPosAtual = prim;
+        String lista = "";
+        for(int i = 0; i < quant; i++)
+            lista = lista + noPosAtual.getItem().toString();
+        return lista;
     }
 }

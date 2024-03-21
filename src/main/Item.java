@@ -25,7 +25,6 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "codigo=" + codigo +
-                ", nome='" + nome + '\'' +
-                '}';
+                ", nome='" + nome + "} ";
     }
 }
