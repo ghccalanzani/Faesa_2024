@@ -105,6 +105,27 @@ public class LseItem {
         return remover(0);
     }
 
+    public NoItem removerDeterminadoNo(int codigoPesquisa){
+        int posNoCodigoPesquisa = -1;
+        boolean achou = false;
+        if (this.eVazia())
+            return null;
+        NoItem noPosAtual = prim;
+        for (int i = 0; i < quant; i++) {
+            if (noPosAtual.getItem().getCodigo() == codigoPesquisa) {
+                posNoCodigoPesquisa = i;
+                achou = true;
+                break;
+            }
+            noPosAtual = noPosAtual.getProximoNo();
+        }
+        if(achou){
+            return remover(posNoCodigoPesquisa);
+        } else{
+            return null;
+        }
+    }
+
     public NoItem remover(int pos) {
         if (this.eVazia())
             return null;
