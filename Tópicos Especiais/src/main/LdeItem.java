@@ -53,7 +53,7 @@ public class LdeItem {
             this.prim = novoNo;
             this.ult = novoNo;
             this.quant++;
-            //(Não precisa apontar para null pois já foi criado com null)
+            //(Não precisa apontar p/ null pois já foi criado com null)
             return true;
         }
         if(pos == 0){
@@ -132,7 +132,51 @@ public class LdeItem {
     }
 
     public NoDuplaItem removerDeterminadoNo(int codigoPesquisa){
-        
+        int pos = 0;
+        boolean achou = false;
+        if (this.eVazia())
+            return null;
+        NoDuplaItem aux = this.prim;
+        while (aux != null) {
+            if (aux.getItem().getCodigo() == codigoPesquisa) {
+                achou = true;
+                break;
+            }
+            aux = aux.getProximoNo();
+            pos++;
+        }
+        if(achou){
+            return remover(pos);
+        } else
+            return null;
+    }
+
+    public LdeItem concatenar(LdeItem novaLista) {
+        if (this.eVazia()){
+            this.prim = novaLista.getPrim();
+            this.ult = novaLista.getUlt();
+            this.quant = novaLista.getQuant();
+            return this;
+        }
+        if (novaLista.eVazia())
+            return this;
+
+        this.ult.setProximoNo(novaLista.prim);
+        novaLista.prim.setAnteriorNo(this.ult);
+        this.ult = novaLista.ult;
+        this.quant += novaLista.quant;
+        return this;
+    }
+
+    public String mostrarElementos () {
+        String temp = "";
+        NoDuplaItem aux = this.prim;
+
+        while (aux != null) {
+            temp += aux.getItem().getCodigo() + " ";
+            aux = aux.getProximoNo();
+        }
+        return temp;
     }
 
 }

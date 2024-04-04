@@ -164,9 +164,12 @@ public class LseItem {
     }
 
     public LseItem concatenar(LseItem novaLista) {
-        if (this.eVazia())
+        if (this.eVazia()) {
+            this.prim = novaLista.prim;
+            this.ult = novaLista.ult;
+            this.quant = novaLista.quant;
             return novaLista;
-
+        }
         if (novaLista.eVazia())
             return this;
 
@@ -175,14 +178,14 @@ public class LseItem {
         this.quant += novaLista.quant;
         return this;
     }
+    public String mostrarElementos () {
+        String temp = "";
+        NoItem aux = this.prim;
 
-    public String mostrarElementos(){
-        if (this.eVazia())
-            return "Lista Vazia";
-        NoItem noPosAtual = prim;
-        String lista = "";
-        for(int i = 0; i < quant; i++)
-            lista = lista + noPosAtual.getItem().toString();
-        return lista;
+        while (aux != null) {
+            temp += aux.getItem().getCodigo() + " ";
+            aux = aux.getProximoNo();
+        }
+        return temp;
     }
 }
