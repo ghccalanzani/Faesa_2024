@@ -67,4 +67,45 @@ public class ListaCircularItem {
         }
         return null;
     }
+
+    public NoItem removerPrimeiro(){
+        if(eVazia())
+            return null;
+        NoItem aux = this.ult.getProximoNo(); //Aponta para o 1° nó ou para ele mesmo quando há só 1 nó
+        if(quant == 1){
+            this.ult = null;
+            this.quant--;
+        } else {
+            this.ult.setProximoNo(aux.getProximoNo());
+            this.quant--;
+        }
+        return aux;
+    }
+
+    public NoItem removerUltimo(){
+        if(eVazia())
+            return null;
+        NoItem noRemovido = this.ult;
+        NoItem aux = this.ult.getProximoNo();
+        if(quant == 1){
+            this.ult = null;
+            this.quant--;
+        } else {
+            while (aux.getProximoNo() != this.ult)
+                aux = aux.getProximoNo(); //Aux para no penúltimo nó
+            aux.setProximoNo(this.ult.getProximoNo());
+            this.ult = aux;
+            this.quant--;
+        }
+        return aux;
+    }
+    public String mostrarElementos () {
+        String temp = "";
+        NoItem aux = this.ult.getProximoNo();
+        do {
+            temp += aux.getItem().toString() + " ";
+            aux = aux.getProximoNo();
+        } while (aux != this.ult.getProximoNo());
+        return temp;
+    }
 }
