@@ -1,4 +1,4 @@
-package pilha_fila;
+package pilhas;
 
 public class PilhaItemLC {
     private Item[] pilha;
