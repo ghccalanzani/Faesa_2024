@@ -4,7 +4,7 @@ public class LseItem {
     private NoItem prim, ult;
     private int quant;
 
-    public LseItem() {
+    public LseItem () {
         this.prim = null;
         this.ult = null;
         this.quant = 0;
@@ -14,178 +14,201 @@ public class LseItem {
         return prim;
     }
 
-    public void setPrim(NoItem prim) {
-        this.prim = prim;
-    }
-
     public NoItem getUlt() {
         return ult;
-    }
-
-    public void setUlt(NoItem ult) {
-        this.ult = ult;
     }
 
     public int getQuant() {
         return quant;
     }
 
-    public boolean eVazia() {
-        return (quant == 0 ? true : false);
-    }
-
-    public boolean insereInicio(Item item) {
-        return insere(0, item);
-    }
-
-    public boolean insereFinal(Item item) {
-        NoItem novoNo = new NoItem(item);
-        if (this.eVazia()) {
-            prim = novoNo;
-            ult = novoNo;
-            quant++;
-            novoNo.setProximoNo(null);
-            return true;
-        } else {
-            ult.setProximoNo(novoNo);
-            novoNo.setProximoNo(null);
-            ult = novoNo;
-            quant++;
+    public boolean eVazio() {
+        if (quant==0) {
             return true;
         }
+        return false;
     }
 
-    public boolean insere(int pos, Item item) {
-        NoItem novoNo;
-        if (pos < 0 || pos >= quant) {  //Considerando que se colocar igual a quant NÃO é a mesma coisa que inserir no final
-            return false;
-        } else if (this.eVazia()) {
-            novoNo = new NoItem(item);
-            prim = novoNo;
-            ult = novoNo;
-            quant++;
-            novoNo.setProximoNo(null);
-            return true;
-        } else if (pos == 0) {          //Inserir no início
-            novoNo = new NoItem(item);
-            novoNo.setProximoNo(prim);
-            prim = novoNo;
-            quant++;
-            return true;
-        } else{
-            NoItem noPosAtual = prim;
-            novoNo = new NoItem(item);
-            for (int i = 0; i < pos - 1; i++) {            //Caminhar até posição anterior ao nó que será inserido
-                noPosAtual = noPosAtual.getProximoNo();
-            }
-            novoNo.setProximoNo(noPosAtual.getProximoNo());
-            noPosAtual.setProximoNo(novoNo);
-            quant++;
-            return true;
-        }
-    }
+    public NoItem getNo (int pos) {
+        NoItem aux;
 
-    public NoItem pesquisar(int codigoPesquisa) {
-        if (this.eVazia())
+        if (pos>=quant || pos<0) {
             return null;
-        NoItem noPosAtual = prim;
-        for (int i = 0; i < quant; i++) {
-            if (noPosAtual.getItem().getCodigo() == codigoPesquisa)
-                return noPosAtual;
-            noPosAtual = noPosAtual.getProximoNo();
+        }
+        // andar na lista ate a posicao pos
+        aux = this.prim;
+        for (int i=0; i<pos; i++) {
+            aux = aux.getProximoNo();
+        }
+        return aux;
+    }
+
+    public void inserePrim (Item elem) {
+        NoItem novo = new NoItem(elem);
+        if (eVazio()) {
+            this.ult = novo;
+        }else {
+            novo.setProximoNo(this.prim);
+        }
+        this.prim = novo;
+        this.quant++;
+    }
+
+    public void insereUlt (Item elem) {
+        NoItem novoNo = new NoItem(elem);
+        if (this.eVazio()) {
+            this.prim = novoNo;
+        }else {
+            this.ult.setProximoNo(novoNo);
+        }
+        this.ult = novoNo;
+        this.quant++;
+    }
+
+    public boolean insere (Item elem, int pos) {
+        NoItem novo, aux;
+        if (pos<0 || pos > this.quant) {
+            return false;
+        }
+        if (pos==0) {
+            inserePrim(elem);
+        }else if (pos == this.quant){
+            insereUlt(elem);
+        } else {
+            novo = new NoItem(elem);
+            aux = this.prim;
+            for (int i=1; i<pos; i++) {
+                aux = aux.getProximoNo();
+            }
+            novo.setProximoNo(aux.getProximoNo());
+            aux.setProximoNo(novo);
+            this.quant++;
+        }
+        return true;
+    }
+
+    public NoItem pesquisa (int num) {
+        NoItem aux = this.prim;
+
+        while (aux!=null) {
+            if (aux.getItem().getCodigo()==num) {
+                return aux;
+            }
+            aux = aux.getProximoNo();
         }
         return null;
     }
 
-    public NoItem removerUltimo() {
-        return remover(quant - 1);
-    }
-
-    public NoItem removerPrimeiro() {
-        return remover(0);
-    }
-
-    public NoItem removerDeterminadoNo(int codigoPesquisa){
-        int posNoCodigoPesquisa = -1;
-        boolean achou = false;
-        if (this.eVazia())
-            return null;
-        NoItem noPosAtual = prim;
-        for (int i = 0; i < quant; i++) {
-            if (noPosAtual.getItem().getCodigo() == codigoPesquisa) {
-                posNoCodigoPesquisa = i;
-                achou = true;
-                break;
-            }
-            noPosAtual = noPosAtual.getProximoNo();
-        }
-        if(achou){
-            return remover(posNoCodigoPesquisa);
-        } else{
+    public NoItem removePrim () {
+        NoItem aux;
+        if (eVazio()) {
             return null;
         }
-    }
-
-    public NoItem remover(int pos) {
-        if (this.eVazia())
-            return null;
-        NoItem noPosAtual = prim;
-        NoItem noRemovido;
-        if (pos < 0 || pos >= quant)
-            return null;
-        if (quant == 1) { //Caso só tenha um nó
-            noRemovido = this.prim;
-            prim = null;
-            ult = null;
-            quant--;
-            return noRemovido;
+        aux = this.prim;
+        this.prim = this.prim.getProximoNo();
+        if (quant==1) {
+            this.ult = null;
         }
-        if (pos == quant - 1) { //Caso o nó a ser removido seja o último
-            for (int i = 0; i < pos - 1; i++)  //Caminhar até posição anterior ao nó que será removido
-                noPosAtual = noPosAtual.getProximoNo();
-            noRemovido = noPosAtual.getProximoNo();
-            noPosAtual.setProximoNo(null);
-            quant--;
-            return noRemovido;
-        }
-        if (pos == 0) { //Caso o nó a ser removido seja o primeiro
-            noRemovido = prim;
-            prim = prim.getProximoNo();
-            quant--;
-            return noRemovido;
-        }
-        //Remover o k-ésimo nó
-        for (int i = 0; i < pos - 1; i++)   //Caminhar até posição anterior ao nó que será removido
-            noPosAtual = noPosAtual.getProximoNo();
-        noRemovido = noPosAtual.getProximoNo();
-        noPosAtual.setProximoNo(noRemovido.getProximoNo());
         quant--;
-        return noRemovido;
+        return aux;
     }
 
-    public LseItem concatenar(LseItem novaLista) {
-        if (this.eVazia()) {
-            this.prim = novaLista.prim;
-            this.ult = novaLista.ult;
-            this.quant = novaLista.quant;
-            return novaLista;
+    public NoItem removeUlt () {
+        NoItem atual, aux;
+        if (eVazio()) {
+            return null;
         }
-        if (novaLista.eVazia())
-            return this;
-
-        this.ult.setProximoNo(novaLista.prim);
-        this.ult = novaLista.ult;
-        this.quant += novaLista.quant;
-        return this;
+        aux = this.ult;
+        if (quant==1) {
+            this.prim = null;
+            this.ult = null;
+        }else {
+            atual = this.prim;
+            for (int i=0; i<quant-2; i++) {
+                atual = atual.getProximoNo();
+            }
+            atual.setProximoNo(null);
+            this.ult = atual;
+        }
+        quant--;
+        return aux;
     }
-    public String mostrarElementos () {
-        String temp = "";
-        NoItem aux = this.prim;
 
-        while (aux != null) {
-            temp += aux.getItem().getCodigo() + " ";
+    public NoItem remove (int cod) {
+        NoItem atual, ant;
+        if (eVazio()) {
+            return null;
+        }
+        if (quant==1) {
+            if (cod==this.prim.getItem().getCodigo()) {
+                atual = this.prim;
+                this.prim = null;
+                this.ult = null;
+                quant--;
+                return atual;
+            } else {
+                return null;
+            }
+        } else {
+            atual = this.prim;
+            ant = this.prim;
+            if (this.prim.getItem().getCodigo()==cod) {
+                return removePrim();
+            }
+            while (atual!=null) {
+                if (atual.getItem().getCodigo()==cod) {
+                    ant.setProximoNo(atual.getProximoNo());
+                    quant--;
+                    return atual;
+                }
+                ant = atual;
+                atual = atual.getProximoNo();
+            }
+            return null;
+        }
+    }
+
+    public NoItem removePos (int pos) {
+        NoItem atual, ant;
+        if (pos<0 || pos >= quant) {
+            return null;
+        }
+        if (pos==0) {
+            return removePrim();
+        }
+        if (pos==this.quant-1) {
+            return removeUlt();
+        }
+        ant = this.prim;
+        for (int i=0; i<pos-1; i++) {
+            ant = ant.getProximoNo();
+        }
+        atual = ant.getProximoNo();
+        ant.setProximoNo(atual.getProximoNo());
+        quant--;
+        return atual;
+    }
+
+    public String toString () {
+        String temp="";
+        NoItem aux= this.prim;
+
+        while (aux!=null) {
+            temp += aux.getItem().getCodigo()+"  ";
             aux = aux.getProximoNo();
         }
         return temp;
     }
+
+    public void concatenar (LseItem l2) {
+        this.ult.setProximoNo(l2.prim);
+        this.ult = l2.ult;
+        quant += l2.getQuant();
+        l2.prim = null;
+        l2.ult = null;
+        l2.quant=0;
+
+    }
+
+
 }
