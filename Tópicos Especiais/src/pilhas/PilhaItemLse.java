@@ -30,12 +30,19 @@ public class PilhaItemLse {
             return true;
         }
     }
-    public NoItem pop() {
+    public Item pop() {
         if (this.eVazia())
             return null;
         NoItem aux = this.top;
         this.top = this.top.getNoAbaixo();
         this.quant--;
-        return aux;
+        return aux.getItem();
+    }
+
+    public Item top(){
+        if (this.eVazia())
+            return null;
+        else
+            return this.top.getItem();
     }
 }
