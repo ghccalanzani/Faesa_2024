@@ -1,4 +1,4 @@
-package main;
+package listas;
 
 public class ListaContigua {
     private Item[] vetor;

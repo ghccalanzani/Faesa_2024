@@ -1,4 +1,4 @@
-package main;
+package listas;
 public class Item {
     private int codigo;
     private String nome;

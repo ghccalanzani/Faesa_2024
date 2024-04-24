@@ -1,4 +1,4 @@
-package main;
+package listas;
 
 public class ListaCircularItem {
     private NoItem ult;
