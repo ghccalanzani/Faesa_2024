@@ -32,7 +32,6 @@ public class PilhaItemLC {
     public boolean push(Item novoItem) {
         if (eCheia())
             aumenta();
-        //Trecho abaixo tbm serve para pilha vazia
         this.pilha[quant] = novoItem; //Quant -> primeira posição vazia
         this.quant++;
         return true;
