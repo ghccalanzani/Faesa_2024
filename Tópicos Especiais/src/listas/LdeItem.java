@@ -26,7 +26,11 @@ public class LdeItem {
         return (this.quant == 0 ? true : false);
     }
 
-    public boolean inserePrim(Item item){
+    public boolean inserePrimeiro(Item item){
+        return inserir(0, item);
+    }
+
+    private boolean inserePrim(Item item){
         NoDuplaItem novoNo = new NoDuplaItem(item);
         novoNo.setProximoNo(this.prim);
         this.prim.setAnteriorNo(novoNo);
@@ -35,7 +39,11 @@ public class LdeItem {
         return true;
     }
 
-    public boolean insereUlt(Item item){
+    public boolean insereUltimo(Item item){
+        return inserir(this.quant, item);
+    }
+
+    private boolean insereUlt(Item item){
         NoDuplaItem novoNo = new NoDuplaItem(item);
         novoNo.setAnteriorNo(this.ult);
         this.ult.setProximoNo(novoNo);
@@ -87,7 +95,11 @@ public class LdeItem {
         return null;
     }
 
-    public NoDuplaItem removePrim(){
+    public NoDuplaItem removePrimeiro(){
+        return remover(0);
+    }
+
+    private NoDuplaItem removePrim(){
         NoDuplaItem noRemovido = this.prim;
         this.prim = this.prim.getProximoNo();
         this.prim.setAnteriorNo(null);
@@ -95,7 +107,11 @@ public class LdeItem {
         return noRemovido;
     }
 
-    public NoDuplaItem removeUlt(){
+    public NoDuplaItem removeUltimo(){
+        return remover(this.quant - 1);
+    }
+
+    private NoDuplaItem removeUlt(){
         NoDuplaItem noRemovido = this.ult;
         this.ult = this.ult.getAnteriorNo();
         this.ult.setProximoNo(null);
