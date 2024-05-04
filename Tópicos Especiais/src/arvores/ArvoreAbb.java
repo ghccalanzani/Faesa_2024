@@ -142,7 +142,7 @@ public class ArvoreAbb {
         raiz = construirArvoreBalanceada(valores, 0, valores.size() - 1);
     }
 
-    private NoAbb construirArvoreBalanceada(List<Integer> valores, int inicio, int fim) {
+    private NoAbb construirArvoreBalanceada(ArrayList<Integer> valores, int inicio, int fim) {
         if (inicio > fim) {
             return null;
         }
