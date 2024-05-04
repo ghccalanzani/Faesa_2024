@@ -136,4 +136,26 @@ public class ArvoreAbb {
         }
     }
 
+    public void balancear() {
+        ArrayList<Integer> valores = new ArrayList<>();
+        inOrdem(raiz, valores);
+        raiz = construirArvoreBalanceada(valores, 0, valores.size() - 1);
+    }
+
+    private NoAbb construirArvoreBalanceada(List<Integer> valores, int inicio, int fim) {
+        if (inicio > fim) {
+            return null;
+        }
+
+        int meio = (inicio + fim) / 2;
+        Item item = pesquisa(valores.get(meio)).getItem();
+        NoAbb no = new NoAbb(item);
+
+        no.setEsq(construirArvoreBalanceada(valores, inicio, meio - 1));
+        no.setDir(construirArvoreBalanceada(valores, meio + 1, fim));
+
+        return no;
+    }
+
+
 }
