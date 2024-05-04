@@ -95,44 +95,44 @@ public class ArvoreAbb {
 //Pós-ordem: esquerda, direita, raiz
 
     public void preOrdem() {
-        ArrayList<Integer> caminhamento = new ArrayList<>();
-        preOrdem(this.raiz, caminhamento);
-        System.out.println(caminhamento);
+        ArrayList<Integer> lista = new ArrayList<>();
+        preOrdem(this.raiz, lista);
+        System.out.println(lista);
     }
 
-    private void preOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+    private void preOrdem(NoAbb no, ArrayList<Integer> lista) {
         if (no != null) {
-            caminhamento.add(no.getItem().getCodigo());
-            preOrdem(no.getEsq(), caminhamento);
-            preOrdem(no.getDir(), caminhamento);
+            lista.add(no.getItem().getCodigo());
+            preOrdem(no.getEsq(), lista);
+            preOrdem(no.getDir(), lista);
         }
     }
 
     public void inOrdem() {
-        ArrayList<Integer> caminhamento = new ArrayList<>();
-        inOrdem(this.raiz, caminhamento);
-        System.out.println(caminhamento);
+        ArrayList<Integer> lista = new ArrayList<>();
+        inOrdem(this.raiz, lista);
+        System.out.println(lista);
     }
 
-    private void inOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+    private void inOrdem(NoAbb no, ArrayList<Integer> lista) {
         if (no != null) {
-            inOrdem(no.getEsq(), caminhamento);
-            caminhamento.add(no.getItem().getCodigo());
-            inOrdem(no.getDir(), caminhamento);
+            inOrdem(no.getEsq(), lista);
+            lista.add(no.getItem().getCodigo());
+            inOrdem(no.getDir(), lista);
         }
     }
 
     public void posOrdem() {
-        ArrayList<Integer> caminhamento = new ArrayList<>();
-        posOrdem(this.raiz, caminhamento);
-        System.out.println(caminhamento);
+        ArrayList<Integer> lista = new ArrayList<>();
+        posOrdem(this.raiz, lista);
+        System.out.println(lista);
     }
 
-    private void posOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+    private void posOrdem(NoAbb no, ArrayList<Integer> lista) {
         if (no != null) {
-            posOrdem(no.getEsq(), caminhamento);
-            posOrdem(no.getDir(), caminhamento);
-            caminhamento.add(no.getItem().getCodigo());
+            posOrdem(no.getEsq(), lista);
+            posOrdem(no.getDir(), lista);
+            lista.add(no.getItem().getCodigo());
         }
     }
 
