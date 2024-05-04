@@ -14,6 +14,10 @@ public class NoAbb {
         return item;
     }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     public NoAbb getEsq() {
         return esq;
     }

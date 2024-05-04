@@ -51,4 +51,40 @@ public class ArvoreAbb {
             no.setDir(insere(item, no.getDir()));
         return no;
     }
+
+    public boolean remove(int num){
+        if (pesquisa(num) == null)
+            return false;
+        raiz = remove(num, this.raiz);
+        this.quant--;
+        return true;
+    }
+
+    private NoAbb remove(int num, NoAbb no){
+        if (no == null)
+            return null;
+        else if (num > no.getItem().getCodigo())
+            no.setDir(remove(num, no.getDir()));
+        else if (num < no.getItem().getCodigo())
+            no.setEsq(remove(num, no.getEsq()));
+        else {
+            if (no.getEsq() == null)
+                return no.getDir();
+            else if (no.getDir() == null)
+                return no.getEsq();
+            else {
+                NoAbb temp = maiorEsq(no.getEsq(), no.getEsq());
+                no.setItem(temp.getItem());
+                no.setEsq(remove(temp.getItem().getCodigo(), no.getEsq()));
+            }
+        }
+        return no;
+    }
+
+    private NoAbb maiorEsq(NoAbb no, NoAbb maior){
+        if (no.getDir() != null)
+            return maiorEsq(no.getDir(), no.getDir());
+        else
+            return maior;
+    }
 }
