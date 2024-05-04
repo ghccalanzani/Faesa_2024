@@ -7,7 +7,6 @@
     <list default="true" id="f997d5b5-955c-4aff-be15-449fe85e9eb0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/arvores/ArvoreAbb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arvores/ArvoreAbb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arvores/NoAbb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arvores/NoAbb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,7 @@
       <updated>1714572213348</updated>
       <workItem from="1714572214272" duration="556000" />
       <workItem from="1714849055703" duration="2575000" />
-      <workItem from="1714855722112" duration="549000" />
+      <workItem from="1714855722112" duration="2893000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,7 @@
 package arvores;
 
+import java.util.*;
+
 public class ArvoreAbb {
     private NoAbb raiz;
     private int quant;
@@ -87,4 +89,51 @@ public class ArvoreAbb {
         else
             return maior;
     }
+
+//Pré-ordem: raiz, esquerda, direita
+//In-ordem: esquerda, raiz, direita
+//Pós-ordem: esquerda, direita, raiz
+
+    public void preOrdem() {
+        ArrayList<Integer> caminhamento = new ArrayList<>();
+        preOrdem(this.raiz, caminhamento);
+        System.out.println(caminhamento);
+    }
+
+    private void preOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+        if (no != null) {
+            caminhamento.add(no.getItem().getCodigo());
+            preOrdem(no.getEsq(), caminhamento);
+            preOrdem(no.getDir(), caminhamento);
+        }
+    }
+
+    public void inOrdem() {
+        ArrayList<Integer> caminhamento = new ArrayList<>();
+        inOrdem(this.raiz, caminhamento);
+        System.out.println(caminhamento);
+    }
+
+    private void inOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+        if (no != null) {
+            inOrdem(no.getEsq(), caminhamento);
+            caminhamento.add(no.getItem().getCodigo());
+            inOrdem(no.getDir(), caminhamento);
+        }
+    }
+
+    public void posOrdem() {
+        ArrayList<Integer> caminhamento = new ArrayList<>();
+        posOrdem(this.raiz, caminhamento);
+        System.out.println(caminhamento);
+    }
+
+    private void posOrdem(NoAbb no, ArrayList<Integer> caminhamento) {
+        if (no != null) {
+            posOrdem(no.getEsq(), caminhamento);
+            posOrdem(no.getDir(), caminhamento);
+            caminhamento.add(no.getItem().getCodigo());
+        }
+    }
+
 }
