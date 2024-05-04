@@ -157,5 +157,8 @@ public class ArvoreAbb {
         return no;
     }
 
+    public void mostrarElementos(){
+        inOrdem();
+    }
 
 }
