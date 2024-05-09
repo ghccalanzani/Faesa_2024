@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f997d5b5-955c-4aff-be15-449fe85e9eb0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arvores/ArvoreAbb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arvores/ArvoreAbb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +41,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -57,7 +56,10 @@
       <updated>1714572213348</updated>
       <workItem from="1714572214272" duration="556000" />
       <workItem from="1714849055703" duration="2575000" />
-      <workItem from="1714855722112" duration="5672000" />
+      <workItem from="1714855722112" duration="5758000" />
+      <workItem from="1715038405747" duration="1963000" />
+      <workItem from="1715220990632" duration="35000" />
+      <workItem from="1715221312967" duration="30000" />
     </task>
     <servers />
   </component>
