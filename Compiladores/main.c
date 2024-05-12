@@ -9,7 +9,7 @@ int main() {
     };
 
     struct no *p, *head[5];
-    int i, sn, tipotoken, token;
+    int i, aux, tipotoken;
 
     for(i=0; i<5; i++){
         head[i] = NULL;
@@ -28,9 +28,9 @@ int main() {
         head[tipotoken] = p;
 
         printf("Deseja inserir um novo lexema: (0-nao 1-sim)");
-        scanf("%i", &sn);
+        scanf("%i", &aux);
 
-    } while(sn == 1);
+    } while(aux == 1);
 
     //Printar elementos
     for (i = 0; i < 5; i++) {
