@@ -9,10 +9,10 @@ int main() {
     };
 
     struct no *p, *head[5];
-    int a, sn, tipotoken, token;
+    int i, sn, tipotoken, token;
 
-    for(a=0; a<5; a++){
-        head[a] = NULL;
+    for(i=0; i<5; i++){
+        head[i] = NULL;
     }
 
     do{
@@ -33,8 +33,8 @@ int main() {
     } while(sn == 1);
 
     //Printar elementos
-    for (a = 0; a < 5; a++) {
-        p = head[a];
+    for (i = 0; i < 5; i++) {
+        p = head[i];
         while (p != NULL) {
             printf("%d ", p->dado);
             p = p->prox;
