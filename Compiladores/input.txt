@@ -1,1 +1,1 @@
-int;50;0;char;abc;
+int;50;0;char;xxx
