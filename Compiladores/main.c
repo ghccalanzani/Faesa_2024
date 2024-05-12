@@ -53,7 +53,7 @@ int main() {
          }
          printf("\n");
      }
-    
+
     fclose(arquivo);
     return 0;
 }
