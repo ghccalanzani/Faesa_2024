@@ -33,6 +33,7 @@ int main() {
     } while(aux == 1);
 
     //Printar elementos
+    printf("\nElementos:\n");
     for (i = 0; i < 5; i++) {
         p = head[i];
         while (p != NULL) {
