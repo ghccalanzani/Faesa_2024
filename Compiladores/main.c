@@ -17,7 +17,7 @@ int main() {
         head[i] = NULL;
     }
     //Tipo 0 = token tipo de dado (int, float, long e char")
-    //Tipo 1 = token valor (0, 0-2147483647)
+    //Tipo 1 = token valor (0, positivos e negativos (inteiros ou ponto flutuante)
     //Tipo 2 = tokens não reconhecidos
 
     arquivo = fopen("../input.txt", "r");
