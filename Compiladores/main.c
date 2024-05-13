@@ -33,7 +33,7 @@ int main() {
         if(strcmp(tokenLido, "int") == 0 || strcmp(tokenLido, "float") == 0 || strcmp(tokenLido, "double") == 0 || strcmp(tokenLido, "char") == 0){
             tipotoken = 0;
         }
-        else if((strchr(tokenLido, '0') != NULL && strlen(tokenLido) == 1) || atoi(tokenLido) != 0) {
+        else if((strchr(tokenLido, '0') != NULL && strlen(tokenLido) == 1) || atof(tokenLido) != 0) {
             tipotoken = 1;
         } else {
             tipotoken = 2;
