@@ -26,7 +26,7 @@ public class FilaItemLse {
             this.quant++;
             return true;
         } else {
-            this.head.setProximoNo(novoNo);
+            this.tail.setProximoNo(novoNo);
             this.tail = novoNo;
             this.quant++;
             return true;
